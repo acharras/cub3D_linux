@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:30:15 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 19:01:28 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/06 21:16:33 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	ft_init_config_map(t_cub3d *game)
 	game->sprint = 100;
 	game->maxsprint = 100;
 	game->wait_sprint = 0;
+	game->sp_nbr = 0;
 }
 
 static void	ft_init_config_game(t_cub3d *game)

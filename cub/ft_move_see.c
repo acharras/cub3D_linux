@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:14:30 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 16:25:16 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/07 14:27:40 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ static void	ft_see_r(t_cub3d *game)
 
 int			key_move(t_cub3d *game)
 {
-	game->movespeed = 0.03;
-	game->rotspeed = 0.015;
+	game->movespeed = 0.02;
+	game->rotspeed = 0.01;
 	if (++game->wait_life == 6)
 		game->wait_life = 0;
 	if (game->press_shift == 0 && ++game->wait_sprint == 20)

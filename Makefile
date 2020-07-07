@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/07 11:37:56 by acharras          #+#    #+#              #
-#    Updated: 2020/07/06 16:06:00 by user42           ###   ########lyon.fr    #
+#    Updated: 2020/07/07 14:47:16 by user42           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LIBFT_PATH =	./libft
 MINILIBX_PATH =	./minilibx
 HEADERS =	cub/ft_cub3d.h
 OBJ =	$(SRC:.c=.o) libft/libft.a minilibx/libmlx.a
-NAME =	cub3D
+NAME =	Cub3D
 CC =	gcc
 CFLAGS =	-Wall -Wextra -Werror -g3
 MLXFLAGS =	-lX11 -lXext -L minilibx/ -lmlx -lm -pthread -lbsd

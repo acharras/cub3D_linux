@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:26:45 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 18:00:03 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/07 14:51:31 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void	ft_check_line_next(t_cub3d *game, int i, int k)
 		map[i][k] != '2' && game->map[i][k] != 'N' && game->map[i][k]
 		!= 'S' && game->map[i][k] != 'E' && game->map[i][k] != 'W')
 	{
-		printf("|%s|\n", game->map[i]);
-		printf("|%c|", game->map[i][k]);
 		ft_putstr("Error\nMap error...\n");
 		ft_exit(game);
 	}
@@ -43,8 +41,8 @@ static void	ft_check_line(t_cub3d *game, int i, int k)
 			game->map[i][k] == '0' || game->map[i][k] == '2')
 		{
 			if ((game->map[i + 1] && (int)ft_strlen(game->map
-			[i + 1]) <= k) || (game->map[i - 1] &&
-			(int)ft_strlen(game->map[i - 1]) <= k))
+			[i + 1]) <= k) || (i - 1 < 0) ||
+			(((int)ft_strlen(game->map[i - 1]) <= k && game->map[i - 1])))
 			{
 				ft_putstr("Error\nMap error : a | 0 | 2 | N | S | E | W |");
 				ft_putstr(" out of the map...\n");
@@ -117,11 +115,6 @@ void		ft_check_map_error(t_cub3d *game)
 	k = 0;
 	while (game->map[++i])
 	{
-		/*if (game->map[i] == NULL)
-		{
-			ft_putstr("Error\nMap error : Newline in the map...\n");
-			ft_exit(game);
-		}*/
 		j = -1;
 		while (game->map[i][++j])
 			ft_check_space(game, i, j);
@@ -133,7 +126,7 @@ void		ft_check_map_error(t_cub3d *game)
 	if (ft_strcheck_chr(game->map[i - 1], '1') != 0 || game->map_false != 1)
 	{
 		ft_putstr("Error\nMap error : no '1' at the last line ||");
-		ft_putstr(" many | N | S | W | E | int the map...\n");
+		ft_putstr(" many or no | N | S | W | E | in the map...\n");
 		ft_exit(game);
 	}
 }

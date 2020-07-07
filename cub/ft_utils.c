@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:17:53 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 18:47:49 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/06 20:53:28 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,4 @@ int			ft_check_map(t_cub3d *game, char *line)
 		game->map_i++;
 	}
 	return (1);
-}
-
-int	ft_chrcheck_str(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] != c)
-			return (1);
-		i++;
-	}
-	return (0);
 }

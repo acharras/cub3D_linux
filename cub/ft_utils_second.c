@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 14:16:07 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 17:51:22 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/06 20:56:44 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ static void	ft_check_space_next(t_cub3d *game, int i, int j)
 
 void		ft_check_space(t_cub3d *game, int i, int j)
 {
-	if (game->map[i] == NULL)
-	{
-		ft_putstr("Error\nMap error : Newline in the map...\n");
-		ft_exit(game);
-	}
 	if (game->map[i][j] == ' ' && (j - 1) == -1 && ((j + 1) <=
 		(int)ft_strlen(game->map[i]) && ((game->map[i][j + 1] == ' ') ||
 		(game->map[i][j + 1] == '1'))))

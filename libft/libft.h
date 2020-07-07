@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 13:42:34 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 18:50:49 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/07 14:54:42 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int		ft_strcmp(char *s1, char *s2);
 char	*ft_strjoin_f_s2(char *s1, char *s2);
 char	*ft_rmchr(char *str, char rm);
 int		ft_strcheck_chr(char *str, char c);
-int 	ft_chrcheck_str(char *str, char c);
+int		ft_chrcheck_str(char *str, char c);
 
 #endif

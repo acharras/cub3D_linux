@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:35:56 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 19:09:47 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/06 19:38:37 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	ft_check_map_empty_line(t_cub3d *game, char *line)
 {
 	if (game->verif_we == 1 && game->verif_sp == 1 && game->verif_so == 1
 		&& game->verif_no == 1 && game->verif_f == 1 && game->verif_c
-		== 1 && game->arg_r == 1 && game->verif_ea ==1)
+		== 1 && game->arg_r == 1 && game->verif_ea == 1)
 	{
 		if (line[0] != '\0' && ft_chrcheck_str(line, '1') == 1)
 			game->arg_map = 1;
@@ -100,8 +100,8 @@ void		ft_check_arg(t_cub3d *game, char *line)
 	int		j;
 
 	j = 1;
-	ft_check_map_empty_line(game, line);
 	ft_check_no_empty_line(game, line);
+	ft_check_map_empty_line(game, line);
 	if (line[0] == 'R')
 	{
 		while (line[j] != '\0')
