@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:00:49 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 15:08:08 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 16:09:16 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,13 @@ int			main(int ac, char **av)
 	ft_fov_init(game);
 	if ((game->mlx_ptr = mlx_init()) == NULL)
 		ft_exit(game);
-	if ((game->win_ptr = mlx_new_window(game->mlx_ptr, game->width,
+	mlx_get_screen_size(game->mlx_ptr, &game->width_check,
+		&game->height_check);
+	ft_check_w_h(game);
+	if (game->screenshot == 0)
+		if ((game->win_ptr = mlx_new_window(game->mlx_ptr, game->width,
 			game->height, "Cub3D")) == NULL)
-		ft_exit(game);
+			ft_exit(game);
 	game->tracked = 1;
 	ft_texture_init(game);
 	game->tracked = 8;

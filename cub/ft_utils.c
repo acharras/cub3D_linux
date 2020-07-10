@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:17:53 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 20:53:28 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 16:19:53 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,32 @@ int			ft_check_map(t_cub3d *game, char *line)
 		game->map_i++;
 	}
 	return (1);
+}
+
+void		ft_check_w_h(t_cub3d *game)
+{
+	if (game->width_check < game->width)
+	{
+		game->width = game->width_check;
+		ft_putstr("WARNING !\nmap width resized because ");
+		ft_putstr("width is superior than the limit screen\n");
+	}
+	if (game->width < 250)
+	{
+		game->width = 250;
+		ft_putstr("WARNING !\nmap width resized to 250 because ");
+		ft_putstr("too small width\n");
+	}
+	if (game->height_check < game->height)
+	{
+		game->height = game->height_check;
+		ft_putstr("WARNING !\nmap height resized because ");
+		ft_putstr("height is superior than the limit screen\n");
+	}
+	if (game->height < 150)
+	{
+		game->height = 150;
+		ft_putstr("WARNING !\nmap height resized to 150 because ");
+		ft_putstr("too small height\n");
+	}
 }

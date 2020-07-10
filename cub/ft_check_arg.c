@@ -6,28 +6,33 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:35:56 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 19:38:37 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 16:49:19 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
 
-static void	ft_check_arg_next_2(t_cub3d *game, char *line, int j)
+static void	ft_check_arg_next_2(t_cub3d *game, char *line, int j, int i)
 {
-	if ((game->height = ft_atoi(&line[j])) > 1400)
-	{
-		game->height = 1400;
-		ft_putstr("WARNING !\nmap height resized to 1400 because ");
-		ft_putstr("height is superior than the limit screen\n");
-	}
-	if (game->height < 150)
-	{
-		game->height = 150;
-		ft_putstr("WARNING !\nmap height resized to 150 because ");
-		ft_putstr("too small height\n");
-	}
-	j = j + ft_int_len(ft_atoi(&line[j]));
+	int		k;
+
 	while (line[j] == ' ')
+		j++;
+	k = j;
+	while (line[j] == '0')
+		j++;
+	while (line[j] == '0' || line[j] == '1' || line[j] == '2' || line[j] == '3'
+		|| line[j] == '4' || line[j] == '5' || line[j] == '6' || line[j] == '7'
+		|| line[j] == '8' || line[j] == '9')
+	{
+		i++;
+		j++;
+	}
+	if (i > 4)
+		game->height = 10000;
+	else
+		game->height = ft_atoi(&line[k]);
+	while (line[(j = k + ft_int_len(ft_atoi(&line[k])))] == ' ')
 		j++;
 	if (line[j] != '\0')
 	{
@@ -36,30 +41,32 @@ static void	ft_check_arg_next_2(t_cub3d *game, char *line, int j)
 	}
 }
 
-static int	ft_check_arg_next(t_cub3d *game, char *line, int j)
+static int	ft_check_arg_next(t_cub3d *game, char *line, int j, int i)
 {
+	int		k;
+
 	while (line[j] == ' ')
 		j++;
+	k = j;
 	if (game->width != -1 || game->height != -1)
 	{
 		ft_putstr("Error\nMultiple or no argument 'R'...");
 		ft_exit(game);
 	}
-	if ((game->width = ft_atoi(&line[j])) > 2560)
-	{
-		game->width = 2560;
-		ft_putstr("WARNING !\nmap width resized to 2560 because ");
-		ft_putstr("width is superior than the limit screen\n");
-	}
-	if (game->width < 250)
-	{
-		game->width = 250;
-		ft_putstr("WARNING !\nmap width resized to 250 because ");
-		ft_putstr("too small width\n");
-	}
-	j = j + ft_int_len(ft_atoi(&line[j]));
-	while (line[j] == ' ')
+	while (line[j] == '0')
 		j++;
+	while (line[j] == '0' || line[j] == '1' || line[j] == '2' || line[j] == '3'
+		|| line[j] == '4' || line[j] == '5' || line[j] == '6' || line[j] == '7'
+		|| line[j] == '8' || line[j] == '9')
+	{
+		i++;
+		j++;
+	}
+	if (i > 4)
+		game->width = 10000;
+	else
+		game->width = ft_atoi(&line[k]);
+	j = k + ft_int_len(ft_atoi(&line[k]));
 	return (j);
 }
 
@@ -79,7 +86,7 @@ static void	ft_check_no_empty_line(t_cub3d *game, char *line)
 	}
 }
 
-static void	ft_check_map_empty_line(t_cub3d *game, char *line)
+static int	ft_check_map_empty_line(t_cub3d *game, char *line)
 {
 	if (game->verif_we == 1 && game->verif_sp == 1 && game->verif_so == 1
 		&& game->verif_no == 1 && game->verif_f == 1 && game->verif_c
@@ -93,31 +100,32 @@ static void	ft_check_map_empty_line(t_cub3d *game, char *line)
 			ft_exit(game);
 		}
 	}
+	return (1);
 }
 
 void		ft_check_arg(t_cub3d *game, char *line)
 {
 	int		j;
+	int		i;
 
-	j = 1;
+	j = 0;
 	ft_check_no_empty_line(game, line);
-	ft_check_map_empty_line(game, line);
+	i = ft_check_map_empty_line(game, line);
 	if (line[0] == 'R')
 	{
-		while (line[j] != '\0')
+		while (line[++j] != '\0')
 		{
-			if (line[j] != '0' && line[j] != '1' && line[j] != '2' &&
-				line[j] != '3' && line[j] != '4' && line[j] != '5' &&
-				line[j] != '6' && line[j] != '7' && line[j] != '8' &&
-				line[j] != '9' && line[j] != ' ')
+			if (line[j] != '0' && line[j] != '1' && line[j] != '2' && line[j]
+				!= '3' && line[j] != '4' && line[j] != '5' && line[j] != '6'
+				&& line[j] != '7' && line[j] != '8' && line[j] != '9' &&
+				line[j] != ' ')
 			{
 				ft_putstr("Error\nArgument | R | had a bad format...\n");
 				ft_exit(game);
 			}
-			j++;
 		}
-		j = ft_check_arg_next(game, line, 1);
-		ft_check_arg_next_2(game, line, j);
+		j = ft_check_arg_next(game, line, 1, i);
+		ft_check_arg_next_2(game, line, j, i);
 		game->arg_r = 1;
 	}
 	ft_path(game, line);

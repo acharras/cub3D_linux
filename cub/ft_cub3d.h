@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:38:23 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 20:26:44 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 15:54:51 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,8 @@ typedef	struct		s_cub3d
 	int				maxsprint;
 	int				map_startx;
 	int				map_starty;
+	int				width_check;
+	int				height_check;
 }					t_cub3d;
 
 typedef union
@@ -239,5 +241,6 @@ void				ft_check_map_cub(t_cub3d *game, int error, int i, int j);
 void				ft_draw_lifebar(t_cub3d *game);
 void				ft_check_life(t_cub3d *game);
 void				ft_draw_sprintbar(t_cub3d *game);
+void				ft_check_w_h(t_cub3d *game);
 
 #endif

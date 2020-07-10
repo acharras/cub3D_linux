@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 15:52:04 by acharras          #+#    #+#             */
-/*   Updated: 2020/06/16 15:13:41 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 16:04:31 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ static void	ft_raycasting_next(t_cub3d *game)
 		ft_draw_sprintbar(game);
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img_ptr, 0, 0);
+	mlx_do_sync(game->mlx_ptr);
 	mlx_hook(game->win_ptr, 2, 1L << 0, key_input, game);
 	mlx_hook(game->win_ptr, 3, 1L << 1, key_release, game);
 	mlx_hook(game->win_ptr, 17, 1l << 17, ft_close_prog, game);

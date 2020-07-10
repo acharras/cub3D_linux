@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:41:57 by acharras          #+#    #+#             */
-/*   Updated: 2020/07/06 21:04:15 by user42           ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 16:54:32 by user42           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void		ft_exit_texture(t_cub3d *game)
 
 void		ft_exit(t_cub3d *game)
 {
-	if (game->tracked > 0 && game->img_ptr != 0)
+	if (game->tracked > 0 && game->img_ptr != 0 && game->screenshot == 0)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	if (game->tracked > 1)
+	if (game->tracked > 1 && game->screenshot == 0)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->img_ptr);
 		if (game->tracked > 2 && game->img_no_ptr != 0)
